@@ -22,4 +22,20 @@ Route::get('/', function () {
 //     return view('home');
 // });
 
-Route::get('/home',[HomeController::class,'index']);
+Route::get('/home',[HomeController::class,'index'])->name('home');
+// Route::match(['get', 'post'], '/home', [HomeController::class, 'index'])->name('home');
+// Route::post('/home/create', [HomeController::class, 'create'])->name('home.create');
+// Route::post('/home', [HomeController::class, 'store'])->name('home.store');
+
+// Route::get('/home', function (){
+//     return view('home');
+// });
+
+
+Route::post('/home', [HomeController::class, 'store']);
+
+Route::get('/about',function(){
+    return 'I am from about <br> <a href="/home">Home</a>';
+});
+
+Route::delete('/home/{id}', [HomeController::class, 'destroy']);
